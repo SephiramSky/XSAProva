@@ -1,0 +1,10 @@
+COLUMN TABLE "Serie.Header" (
+	 
+	 "titoloserie" NVARCHAR(30),
+	 "genere" NVARCHAR(30),
+	 "anno" NVARCHAR(4),
+	 "regista" NVARCHAR(30),
+	 PRIMARY KEY ("titoloserie"))
+	 COMMENT 'Series Index'
+	 WITH ASSOCIATIONS( JOIN "Puntate.Item" AS "ITEMS" ON "titoloserie" = "titoloserie")
+	 UNLOAD PRIORITY 5 AUTO MERGE

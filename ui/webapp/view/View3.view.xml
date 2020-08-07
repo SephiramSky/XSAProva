@@ -1,0 +1,105 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:t="sap.ui.table" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="XSAprova.ui.controller.View3"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>SerieName}">
+				<Panel expanded="true" headerText="Inserisci informazioni serie" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<f:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form1">
+							<f:formContainers>
+								<f:FormContainer id="__container1">
+									<f:formElements>
+										<f:FormElement label="{i18n>TitoloSerie}" id="label1">
+											<f:fields>
+												<Input width="50%" id="input1" value="{modello>titoloserie}" editable="false"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Genere}" id="label2">
+											<f:fields>
+												<Input width="50%" required="true" id="input2" value="{modello>genere}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Anno}" id="label3">
+											<f:fields>
+												<Input width="50%" required="true" id="input3" value="{modello>anno}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Regista}" id="label7">
+											<f:fields>
+												<Input width="50%" required="true" id="input7" value="{modello>regista}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+							<f:layout>
+								<f:ResponsiveGridLayout id="__layout1"/>
+							</f:layout>
+						</f:Form>
+					</content>
+				</Panel>
+				<Panel expandable="true" expanded="true" headerText="{i18n>InserisciInformazioniSerie}" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<f:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form2">
+							<f:formContainers>
+								<f:FormContainer id="__container2">
+									<f:formElements>
+										<f:FormElement label="{i18n>TitoloPuntata}" id="label6">
+											<f:fields>
+												<Input width="50%" id="input6" value="{modello>titolopuntata}" editable="false"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Stagione}" id="label5">
+											<f:fields>
+												<Input width="50%" id="input5" value="{modello>stagione}" required="true"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>Episodio}" id="label4">
+											<f:fields>
+												<Input width="50%" id="input4" value="{modello>episodio}" required="true"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+							<f:layout>
+								<f:ResponsiveGridLayout id="__layout2"/>
+							</f:layout>
+						</f:Form>
+					</content>
+				</Panel>
+				<Toolbar height="3rem">
+					<Button icon="sap-icon://decrease-line-height" text="{i18n>Modifica}" press="modify" type="Ghost"/></Toolbar>
+				<Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+					<content>
+						<t:Table id="puntate" rows="{path: 'puntate>/'}" selectionMode="None">
+							<t:columns>
+								<t:Column>
+									<Label text="{i18n>titlepuntata}"/>
+									<t:template>
+										<Text text="{puntate>titolopuntata}" wrapping="false"/>
+									</t:template>
+								</t:Column>
+								<t:Column>
+									<Label text="{i18n>Stagione}"/>
+									<t:template>
+										<Text text="{puntate>stagione}"/>
+									</t:template>
+								</t:Column>
+								<t:Column>
+									<Label text="{i18n>Episodio}"/>
+									<t:template>
+										<Text text="{puntate>episodio}"/>
+									</t:template>
+								</t:Column>
+							</t:columns>
+						</t:Table>
+						
+					</content>
+				</Panel>
+				<Button icon="sap-icon://save" text="{i18n>Salva}" press="onSave"/>
+				<Button xmlns="sap.m" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="button4" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'View1'\}\}\}" text="{i18n>Annulla}" type="Reject" class="myWrnButton"/>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

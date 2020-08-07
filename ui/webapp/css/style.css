@@ -1,0 +1,20 @@
+/* Enter your custom styles here */
+
+.myWrnButton > .sapMBtnInner {
+    border-color: #FF8C00 !important;
+    color: #FF8C00 !important;
+}
+
+.myWrnButton > .sapMBtnHoverable {
+    color: #FF8C00 !important;
+}
+
+.myWrnButton > .sapMBtnActive {
+    background-color: #FF8C00 !important;
+    border-color: #FF8C00 !important;
+    color: #FFFFFF !important;
+}
+
+.myWrnButton > .sapMBtnHover {
+	background-color: #FF8C00 !important;
+}

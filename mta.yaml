@@ -1,0 +1,56 @@
+ID: XSAprova
+_schema-version: '2.1'
+description: 'XSA prova '
+version: 0.0.6
+modules:
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db
+  - name: nodeJs
+    type: nodejs
+    path: nodeJs
+    provides:
+      - name: nodeJs_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: db
+      - name: UAA-service
+  - name: ui
+    type: html5
+    path: ui
+    parameters:
+      disk-quota: 512M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa_XSAprova
+      - name: dest_XSAprova
+      - name: nodeJs_api
+        properties:
+          name: core-xsjs-backend
+          url: '~{url}'
+          forwardAuthToken: true
+        group: destinations
+resources:
+  - name: hdi_db
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: UAA-service
+    type: com.sap.xs.uaa-space
+  - name: uaa_XSAprova
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_XSAprova
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service

@@ -1,0 +1,10 @@
+COLUMN TABLE "Puntate.Item" (
+	 
+	 "POHeader.titoloserie" NVARCHAR(30),
+	 "titolopuntata" NVARCHAR(30),
+	 "stagione" INTEGER,
+	 "episodio" INTEGER,
+	 PRIMARY KEY ("POHeader.titoloserie", "titolopuntata"))
+	 COMMENT 'Shows Index'
+	 WITH ASSOCIATIONS( JOIN "Serie.Header" AS "POHeader" ON "POHeader"."titoloserie" = "POHeader.titoloserie")
+	 UNLOAD PRIORITY 5 AUTO MERGE
